@@ -55,7 +55,7 @@ public class OfficialMinesweeper {
                 } else { // if not a mine, count adjacent mine
                     int count = 0;
                     // Check all 8 adjacent cells
-                    // rowOffset is checking how much you move from current cell and column to check neighbors
+                    // rowOffset is checking how much you move from the current cell and column to check neighbors
                     for (int rowOffset = -1; rowOffset <= 1; rowOffset++) {
                         for (int colOffset = -1; colOffset <= 1; colOffset++) {
                             // Skip the cell itself because you don't want to count it
