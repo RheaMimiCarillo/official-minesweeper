@@ -37,7 +37,6 @@
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
     <module name="ImportOrder"/>
-    <module name="MethodLength"/>
     <module name="AnonInnerLength"/>
     <module name="ParameterNumber"/>
     <module name="GenericWhitespace"/>

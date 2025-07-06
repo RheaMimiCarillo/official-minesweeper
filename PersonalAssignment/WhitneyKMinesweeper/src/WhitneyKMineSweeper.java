@@ -14,6 +14,16 @@ import java.util.Set;
 public class WhitneyKMineSweeper {
 
     /**
+     * Mines.
+     */
+    private final String myMines = "*";
+
+    /**
+     * SafeZone.
+     */
+    private final String mySafeZone = "0";
+
+    /**
      * Constructor for the minesweeper game.
      */
     public WhitneyKMineSweeper() {
@@ -55,17 +65,13 @@ public class WhitneyKMineSweeper {
             for (int col = 0; col < theColumns; col++) {
 
                 final String topSide;
-
                 final String rightTopDia;
                 final String rightSide;
                 final String rightBtmDia;
-
                 final String bottomSide;
-
                 final String leftBtmDia;
                 final String leftSide;
                 final String leftTopDia;
-
                 final boolean isRowTopEdge = row == 0; //if row does not have a top
                 final boolean isRowBtmEdge = row == theRows - 1; //if row does not have a
                 // bottom
@@ -75,7 +81,6 @@ public class WhitneyKMineSweeper {
 
                 //Checks all eight side of the mine, considers all the edge cases,
                 // increments the hints based on if the mine touches the hint safe square
-
                 if (!isSafeSpot(theField[row][col])) {
                     if (theRows > 1 && theColumns > 1) {
                         if (isRowTopEdge && isColLeftEdge) { //Top left corner
@@ -239,6 +244,13 @@ public class WhitneyKMineSweeper {
         }
     }
 
+    /**
+     * Increments the safe spots that touches a mine by 1 for every mine it touches.
+     * @param thePlayfield The minefield.
+     * @param theRow The number of rows that makes up the field.
+     * @param theCol The number of columns that makes up the field.
+     * @param theElement the object inside the grid location.
+     */
     private void incrementSafeSpot(final String[][] thePlayfield, final int theRow,
                                    final int theCol, final String theElement) {
 
@@ -251,7 +263,7 @@ public class WhitneyKMineSweeper {
     }
 
     private boolean isSafeSpot(final String theElement) {
-        return !"*".equals(theElement);
+        return !myMines.equals(theElement);
     }
 
 
@@ -270,7 +282,7 @@ public class WhitneyKMineSweeper {
 
         for (int row = 0; row < theRows; row++) {
             for (int col = 0; col < theColumns; col++) {
-                field[row][col] = "0";
+                field[row][col] = mySafeZone;
             }
         }
 
@@ -280,36 +292,10 @@ public class WhitneyKMineSweeper {
             final int row = mineLoc.getFirst();
             final int col = mineLoc.getLast();
 
-            field[row][col] = "*";
+            field[row][col] = myMines;
         }
 
         return field;
-    }
-
-    /**
-     * Checks if the parsed string is an integer.
-     * Used for checking if the scanned line is the dimension or the field.
-     *
-     * @param parsedStr The string parsed from executeComLineArgs();
-     * @return True if the parsed string is an integer. False otherwise.
-     */
-    private boolean isInteger(final String parsedStr) {
-
-        final boolean result;
-
-        try {
-            if (parsedStr.isEmpty()) {
-                result = false;
-            } else {
-                Integer.parseInt(parsedStr);
-                result = true;
-            }
-
-            return result;
-
-        } catch (NumberFormatException NFE) {
-            return true;
-        }
     }
 
     /**
@@ -343,10 +329,10 @@ public class WhitneyKMineSweeper {
             }
 
             while (currentRow < rows && sc.hasNextLine()) {
-                 final String gridLine = sc.nextLine().trim();
+                final String gridLine = sc.nextLine().trim();
 
                 for (int c = 0; c < cols; c++) {
-                    if (gridLine.charAt(c) == '*') {
+                    if (gridLine.charAt(c) == myMines.toCharArray()[0]) {
                         mineGrid.add(List.of(currentRow, c));
                     }
                 }
@@ -361,7 +347,7 @@ public class WhitneyKMineSweeper {
         for (MineField field : allFields) {
             System.out.printf("Field #%d:\n", ++counter);
             if (field.myRows == 0 || field.myCols == 0) {
-                System.out.println("0");
+                System.out.println(mySafeZone);
                 System.out.println();
             } else {
                 play(field.myRows, field.myCols, field.myMineCord);
@@ -377,7 +363,7 @@ public class WhitneyKMineSweeper {
      * @param theArgs Command line arguments, the redirected file from the command prompt
      */
     public static void main(final String[] theArgs) {
-        WhitneyKMineSweeper mineSweeper = new WhitneyKMineSweeper();
+        final WhitneyKMineSweeper mineSweeper = new WhitneyKMineSweeper();
 
         mineSweeper.executeComLineArgs();
 
