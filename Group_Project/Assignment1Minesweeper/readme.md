@@ -10,7 +10,9 @@ All test cases passed. Some methods have too many nested if's (will fix).
 ### Estimate of Time: 
 Around 1 week, I started working on this project after the assignment was introduced on Monday, June 30,2025
 ### Shortcoming:
-No edge cases were tested by me. I didn't do any exception handling or use checkstyles to make sure my code was clean
+No edge cases were tested by me. I didn't do any exception handling or use checkstyle to make sure my code was clean.
+Initially I had a very nested for loops but Kassie helped me break my code up to 2 separate methods, one for main,
+and the other for processing fields.
 ##   Rhea
 ### Estimate of Time: 
 ### Shortcoming:
