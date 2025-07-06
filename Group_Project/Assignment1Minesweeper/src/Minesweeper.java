@@ -10,10 +10,12 @@ import java.util.Scanner;
 
 public final class Minesweeper {
 
-    private Minesweeper() { }
+    private Minesweeper() {
+    }
 
     /**
      * Main method for Minesweeper.
+     *
      * @param args an array where each line is a line of user input.
      */
     public static void main(final String[] args) {
@@ -25,20 +27,25 @@ public final class Minesweeper {
             // Read the first line to get the dimensions of the field
             final int row = scanner.nextInt();
             final int col = scanner.nextInt();
+
             if (row == 0 && col == 0) {
                 break; // End of input (stops loop if both 0)
             }
 
             scanner.nextLine();
 
-            // Create 2D array to store field.
             final char[][] field = new char[row][col];
+
+            // Create 2D array to store field.
             for (int i = 0; i < row; i++) {
                 // Reads each row of field as string & converts to char array
                 field[i] = scanner.nextLine().toCharArray();
+
             }
 
+
             System.out.println("Field #" + fieldNum + ":");
+
             final String[] result = processField(field);
             for (String line : result) {
                 System.out.println(line);
@@ -60,6 +67,7 @@ public final class Minesweeper {
         final int row = field.length;
         final int col = field[0].length;
         final String[] result = new String[row];
+
 
         // Process each cell in the field
         for (int i = 0; i < row; i++) {
@@ -97,6 +105,8 @@ public final class Minesweeper {
             }
             result[i] = sb.toString();
         }
+
+
         return result;
     }
 

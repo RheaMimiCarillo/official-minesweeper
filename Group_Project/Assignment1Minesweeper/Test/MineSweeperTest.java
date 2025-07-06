@@ -127,7 +127,7 @@ public class MineSweeperTest {
                     () -> assertEquals(expectedOutPut1, myOutput1,
                             "Your minefield generator crashed trying to make 1 mine."),
 
-                    () -> assertEquals(expectedOutPut2, myOutput1,
+                    () -> assertEquals(expectedOutPut2, myOutput2,
                             "Your minefield generator did not properly generate 2 " +
                                     "consecutive minefields")
 
@@ -244,45 +244,6 @@ public class MineSweeperTest {
         }
     }
 
-    @Test
-    void testNoRowsNoColumns() {
-
-        String field = "0\n0 0\n";
-
-        InputStream input = System.in;
-        PrintStream originalOutput = System.out;
-
-        try {
-
-            System.setIn(new ByteArrayInputStream(field.getBytes()));
-
-            ByteArrayOutputStream output = new ByteArrayOutputStream();
-
-            System.setOut(new PrintStream(output));
-
-            Minesweeper.main(new String[]{});
-
-
-            System.setIn(input);
-            System.setOut(originalOutput);
-
-
-            String myOutput = output.toString().replace("\r\n", "\n").trim();
-
-            String expectedOutPut = "Field #1:\n0\n".trim();
-
-            assertAll("Testing for no rows and no columns!",
-                    () -> assertEquals(expectedOutPut, myOutput,
-                            "Your minefield generator failed to generate a minefield " +
-                                    "with no rows and no columns!")
-
-            );
-
-        } finally {
-            System.setIn(input);
-            System.setOut(originalOutput);
-        }
-    }
 
     @Test
     void testCorrectDimensions() {
@@ -461,6 +422,115 @@ public class MineSweeperTest {
             assertAll("Testing for a large field of mines",
                     () -> assertEquals(expectedOutPut, myOutput,
                             "Large mine field was not generated correctly")
+
+            );
+
+        } finally {
+            System.setIn(input);
+            System.setOut(originalOutput);
+        }
+    }
+
+    @Test
+    void testLargeField100x100AllSafeSpaces() {
+        StringBuilder fieldBuilder = new StringBuilder();
+        fieldBuilder.append("100 100\n");
+
+        // Add 100 rows of 100 dots each
+        for (int row = 0; row < 100; row++) {
+            for (int col = 0; col < 100; col++) {
+                fieldBuilder.append(".");
+            }
+            fieldBuilder.append("\n");
+        }
+        fieldBuilder.append("0 0\n");
+
+        String field = fieldBuilder.toString();
+        InputStream input = System.in;
+        PrintStream originalOutput = System.out;
+        try {
+            System.setIn(new ByteArrayInputStream(field.getBytes()));
+
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(output));
+
+            Minesweeper.main(new String[]{});
+
+
+            System.setIn(input);
+            System.setOut(originalOutput);
+
+
+            String myOutput = output.toString().replace("\r\n", "\n").trim();
+
+            StringBuilder expectedBuilder = new StringBuilder();
+            expectedBuilder.append("Field #1:");
+            for (int row = 0; row < 100; row++) {
+                expectedBuilder.append("\n");
+                for (int col = 0;  col < 100; col++) {
+                    expectedBuilder.append("0");
+                }
+            }
+            String expectedOutput = expectedBuilder.toString().replace("\r\n", "\n").trim();
+            assertAll("Testing for a field of 100x100 safe spaces",
+                    () -> assertEquals(expectedOutput, myOutput,
+                            "Large 100x100 field with all safe spaces was not generated " +
+                                    "correctly")
+
+            );
+
+        } finally {
+            System.setIn(input);
+            System.setOut(originalOutput);
+        }
+    }
+    @Test
+    void testLargeField100x100AllMineSpaces() {
+        StringBuilder fieldBuilder = new StringBuilder();
+        fieldBuilder.append("100 100\n");
+
+        // Add 100 rows of 100 dots each
+        for (int row = 0; row < 100; row++) {
+            for (int col = 0; col < 100; col++) {
+                fieldBuilder.append("*");
+            }
+            fieldBuilder.append("\n");
+        }
+        fieldBuilder.append("0 0\n");
+
+        String field = fieldBuilder.toString();
+        InputStream input = System.in;
+        PrintStream originalOutput = System.out;
+        try {
+            System.setIn(new ByteArrayInputStream(field.getBytes()));
+
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+
+            System.setOut(new PrintStream(output));
+
+            Minesweeper.main(new String[]{});
+
+
+            System.setIn(input);
+            System.setOut(originalOutput);
+
+
+            String myOutput = output.toString().replace("\r\n", "\n").trim();
+
+            StringBuilder expectedBuilder = new StringBuilder();
+            expectedBuilder.append("Field #1:");
+            for (int row = 0; row < 100; row++) {
+                expectedBuilder.append("\n");
+                for (int col = 0;  col < 100; col++) {
+                    expectedBuilder.append("*");
+                }
+            }
+            String expectedOutput = expectedBuilder.toString().replace("\r\n", "\n").trim();
+            assertAll("Testing for a field of 100x100 mine spaces",
+                    () -> assertEquals(expectedOutput, myOutput,
+                            "Large 100x100 field with all mine spaces was not generated " +
+                                    "correctly")
 
             );
 
