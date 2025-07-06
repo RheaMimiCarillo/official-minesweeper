@@ -1,35 +1,45 @@
+
+import java.util.Scanner;
+
 /**
- * Minesweeper Game Implementation - Salima Hafurova's solution
+ * Minesweeper Game Implementation - Salima Hafurova's solution.
  *
  * @author salimahafurova
  * @version Summer 2025
  */
 
-import java.util.Scanner;
+public final class Minesweeper {
 
-public class OfficialMinesweeper {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+    private Minesweeper() { }
+
+    /**
+     * Main method for Minesweeper.
+     * @param args an array where each line is a line of user input.
+     */
+    public static void main(final String[] args) {
+        final Scanner scanner = new Scanner(System.in);
         // keep track of which field number we are processing
         int fieldNum = 1;
 
         while (true) {
             // Read the first line to get the dimensions of the field
-            int row = scanner.nextInt();
-            int col = scanner.nextInt();
+            final int row = scanner.nextInt();
+            final int col = scanner.nextInt();
             if (row == 0 && col == 0) {
                 break; // End of input (stops loop if both 0)
             }
 
+            scanner.nextLine();
+
             // Create 2D array to store field.
-            char[][] field = new char[row][col];
+            final char[][] field = new char[row][col];
             for (int i = 0; i < row; i++) {
                 // Reads each row of field as string & converts to char array
-                field[i] = scanner.next().toCharArray();
+                field[i] = scanner.nextLine().toCharArray();
             }
 
             System.out.println("Field #" + fieldNum + ":");
-            String[] result = processField(field);
+            final String[] result = processField(field);
             for (String line : result) {
                 System.out.println(line);
             }
@@ -39,14 +49,21 @@ public class OfficialMinesweeper {
         scanner.close();
     }
 
-    public static String[] processField(char[][] field) {
-        int row = field.length;
-        int col = field[0].length;
-        String[] result = new String[row];
+    /**
+     * Processes the minefield.
+     *
+     * @param field 2D-character array that consists of the minefield.
+     * @return A String array of with each element being a row on the minefield.
+     */
+
+    public static String[] processField(final char[][] field) {
+        final int row = field.length;
+        final int col = field[0].length;
+        final String[] result = new String[row];
 
         // Process each cell in the field
         for (int i = 0; i < row; i++) {
-            StringBuilder sb = new StringBuilder();
+            final StringBuilder sb = new StringBuilder();
             for (int j = 0; j < col; j++) {
                 // If the cell is a mine, print '*'
                 if (field[i][j] == '*') {
@@ -63,8 +80,8 @@ public class OfficialMinesweeper {
                                 continue; // Skip the cell itself
                             }
                             // Calculate the new row and column indices
-                            int newRow = i + rowOffset;
-                            int newCol = j + colOffset;
+                            final int newRow = i + rowOffset;
+                            final int newCol = j + colOffset;
                             // Check if the new indices are within bounds
                             if (newRow >= 0 && newRow < row && newCol >= 0 && newCol < col) {
                                 // If the adjacent cell is a mine, increment the count
@@ -82,5 +99,6 @@ public class OfficialMinesweeper {
         }
         return result;
     }
+
 
 }
