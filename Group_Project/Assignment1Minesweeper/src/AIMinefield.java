@@ -31,7 +31,7 @@ public class AIMinefield {
                 // Write the rows and columns
                 writer.println(rows + " " + cols);
 
-                // Calculate number of mines
+                // Calculate the number of mines
                 int totalCells = rows * cols;
                 int numMines = (int) ((percentMines / 100.0) * totalCells);
 
