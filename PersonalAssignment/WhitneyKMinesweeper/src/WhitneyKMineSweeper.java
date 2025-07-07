@@ -242,19 +242,6 @@ public class WhitneyKMineSweeper {
         }
     }
 
-    private void addHintsHelper(final String[][] theField, final String theElement) {
-        final String topSide;
-        final String rightTopDia;
-        final String rightSide;
-        final String rightBtmDia;
-        final String bottomSide;
-        final String leftBtmDia;
-        final String leftSide;
-        final String leftTopDia;
-
-
-
-    }
 
     /**
      * Increments the safe spots that touches a mine by 1 for every mine it touches.
