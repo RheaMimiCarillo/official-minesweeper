@@ -2,7 +2,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
@@ -29,7 +28,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -66,7 +65,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -106,7 +105,7 @@ public class MineSweeperTest {
             ByteArrayOutputStream output = new ByteArrayOutputStream();
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
             System.setIn(originalIn);
             System.setOut(originalOut);
@@ -141,7 +140,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(originalIn);
@@ -174,7 +173,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
             System.setIn(originalIn);
             System.setOut(originalOut);
@@ -207,7 +206,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -246,7 +245,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -284,7 +283,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -321,7 +320,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -357,7 +356,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -393,7 +392,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -442,7 +441,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
@@ -496,7 +495,7 @@ public class MineSweeperTest {
 
             System.setOut(new PrintStream(output));
 
-            Minesweeper.main(new String[]{});
+            OfficialMinesweeper.main(new String[]{});
 
 
             System.setIn(input);
