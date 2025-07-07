@@ -91,56 +91,43 @@ public class MineSweeperTest {
 
     @Test
     void testSingleAndMultipleFieldsMine() {
-        String field1 = "1 1\n*\n1 1\n0 0\n";
-        String field2 = "1 1\n*\n1 1\n.\n0 0\n";
+        // four fields: 1 mine, 1 mine, 1 safe, 1 safe all concatenate
+        String input =
+                "1 1\n*\n" +      // field #1
+                        "1 1\n*\n" +      // field #2
+                        "1 1\n.\n" +      // field #3
+                        "1 1\n.\n" +      // field #4
+                        "0 0\n";
 
-        InputStream input1 = System.in;
-        InputStream input2 = System.in;
-        PrintStream originalOutput1 = System.out;
-        PrintStream originalOutput2 = System.out;
+        InputStream originalIn = System.in;
+        PrintStream originalOut = System.out;
         try {
-
-            System.setIn(new ByteArrayInputStream(field1.getBytes()));
-            System.setIn(new ByteArrayInputStream(field2.getBytes()));
-
-            ByteArrayOutputStream output1 = new ByteArrayOutputStream();
-            ByteArrayOutputStream outPut2 = new ByteArrayOutputStream();
-
-            System.setOut(new PrintStream(output1));
-            System.setOut(new PrintStream(outPut2));
+            System.setIn(new ByteArrayInputStream(input.getBytes()));
+            ByteArrayOutputStream output = new ByteArrayOutputStream();
+            System.setOut(new PrintStream(output));
 
             Minesweeper.main(new String[]{});
 
+            System.setIn(originalIn);
+            System.setOut(originalOut);
 
-            System.setIn(input1);
-            System.setIn(input2);
-            System.setOut(originalOutput1);
-            System.setOut(originalOutput2);
+            String myOutput = output.toString().replace("\r\n", "\n").trim();
+            String expectedOutput = (
+                    "Field #1:\n*\n\n" +
+                            "Field #2:\n*\n\n" +
+                            "Field #3:\n0\n\n" +
+                            "Field #4:\n0"
+            ).trim();
 
-            String myOutput1 = output1.toString().replace("\r\n", "\n").trim();
-            String myOutput2 = outPut2.toString().replace("\r\n", "\n").trim();
-
-            String expectedOutPut1 = "Field #1:\n*\n".trim();
-            String expectedOutPut2 = "Field #1:\n*\n\nField #2:\n0\n".trim();
-
-            assertAll("Testing for only a single mine minefield with multiple fields",
-                    () -> assertEquals(expectedOutPut1, myOutput1,
-                            "Your minefield generator crashed trying to make 1 mine."),
-
-                    () -> assertEquals(expectedOutPut2, myOutput2,
-                            "Your minefield generator did not properly generate 2 " +
-                                    "consecutive minefields")
-
+            assertAll("Testing 4 consecutive 1x1 minefields",
+                    () -> assertEquals(expectedOutput, myOutput,
+                            "Your minefield generator did not properly generate 4 consecutive minefields.")
             );
-
         } finally {
-            System.setIn(input1);
-            System.setIn(input2);
-            System.setOut(originalOutput1);
-            System.setOut(originalOutput2);
+            System.setIn(originalIn);
+            System.setOut(originalOut);
         }
     }
-
     @Test
     void testMinesAlongOneColumn() {
         String field = "4 3\n*..\n*..\n*..\n*..\n0 0\n";
