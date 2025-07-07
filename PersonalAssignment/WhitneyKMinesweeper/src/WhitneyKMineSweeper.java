@@ -64,14 +64,11 @@ public class WhitneyKMineSweeper {
         for (int row = 0; row < theRows; row++) {
             for (int col = 0; col < theColumns; col++) {
 
-                final String topSide;
-                final String rightTopDia;
                 final String rightSide;
                 final String rightBtmDia;
                 final String bottomSide;
                 final String leftBtmDia;
                 final String leftSide;
-                final String leftTopDia;
                 final boolean isRowTopEdge = row == 0; //if row does not have a top
                 final boolean isRowBtmEdge = row == theRows - 1; //if row does not have a
                 // bottom
@@ -121,122 +118,123 @@ public class WhitneyKMineSweeper {
                         } else if (isRowBtmEdge && isColLeftEdge) { //bottom left
                             // corner
 
-                            topSide = theField[row - 1][col];
-                            rightTopDia = theField[row - 1][col + 1];
-                            rightSide = theField[row][col + 1];
-
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row - 1, col + 1, rightTopDia);
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
+                            incrementSafeSpot(theField, row - 1, col, theField[row - 1][col]);
+                            incrementSafeSpot(theField, row - 1, col + 1, theField[row - 1][col + 1]);
+                            incrementSafeSpot(theField, row, col + 1, theField[row][col + 1]);
 
                         } else if (isColLeftEdge) { // Left side wall
 
-                            topSide = theField[row - 1][col];
-                            rightTopDia = theField[row - 1][col + 1];
-                            rightSide = theField[row][col + 1];
-                            rightBtmDia = theField[row + 1][col + 1];
-                            bottomSide = theField[row + 1][col];
-
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row - 1, col + 1, rightTopDia);
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
-                            incrementSafeSpot(theField, row + 1, col + 1, rightBtmDia);
-                            incrementSafeSpot(theField, row + 1, col, bottomSide);
+                            incrementSafeSpot(theField, row - 1, col,
+                                    theField[row - 1][col]);
+                            incrementSafeSpot(theField, row - 1, col + 1,
+                                    theField[row - 1][col + 1]);
+                            incrementSafeSpot(theField, row, col + 1,
+                                    theField[row][col + 1]);
+                            incrementSafeSpot(theField, row + 1, col + 1,
+                                    theField[row + 1][col + 1]);
+                            incrementSafeSpot(theField, row + 1, col, theField[row + 1][col]);
 
                         } else if (isRowBtmEdge && isColRightEdge) { // bottom right corner
-                            topSide = theField[row - 1][col];
-                            leftTopDia = theField[row - 1][col - 1];
-                            leftSide = theField[row][col - 1];
 
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row - 1, col - 1, leftTopDia);
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
+                            incrementSafeSpot(theField, row - 1, col - 1,
+                                    theField[row - 1][col - 1]);
+
+                            incrementSafeSpot(theField, row, col - 1,
+                                    theField[row][col - 1]);
+
+                            incrementSafeSpot(theField, row - 1, col, theField[row - 1][col]);
+
 
                         } else if (isRowBtmEdge) { // bottom boarder
 
-                            leftSide = theField[row][col - 1];
-                            leftTopDia = theField[row - 1][col - 1];
-                            topSide = theField[row - 1][col];
-                            rightTopDia = theField[row - 1][col + 1];
-                            rightSide = theField[row][col + 1];
+                            incrementSafeSpot(theField, row, col - 1,
+                                    theField[row][col - 1]);
 
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
-                            incrementSafeSpot(theField, row - 1, col - 1, leftTopDia);
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row - 1, col + 1, rightTopDia);
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
+                            incrementSafeSpot(theField, row - 1, col - 1,
+                                    theField[row - 1][col - 1]);
+
+                            incrementSafeSpot(theField, row - 1, col,
+                                    theField[row - 1][col]);
+
+                            incrementSafeSpot(theField, row - 1, col + 1,
+                                    theField[row - 1][col + 1]);
+
+                            incrementSafeSpot(theField, row, col + 1,
+                                    theField[row][col + 1]);
 
                         } else if (isColRightEdge) { // right side wall
 
-                            topSide = theField[row - 1][col];
-                            leftTopDia = theField[row - 1][col - 1];
-                            leftSide = theField[row][col - 1];
-                            leftBtmDia = theField[row + 1][col - 1];
-                            bottomSide = theField[row + 1][col];
+                            incrementSafeSpot(theField, row, col - 1,
+                                    theField[row][col - 1]);
 
+                            incrementSafeSpot(theField, row + 1, col - 1,
+                                    theField[row + 1][col - 1]);
 
-                            incrementSafeSpot(theField, row - 1, col - 1, leftTopDia);
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
-                            incrementSafeSpot(theField, row + 1, col - 1, leftBtmDia);
-                            incrementSafeSpot(theField, row + 1, col, bottomSide);
-                            incrementSafeSpot(theField, row - 1, col, topSide);
+                            incrementSafeSpot(theField, row + 1, col,
+                                    theField[row + 1][col]);
+
+                            incrementSafeSpot(theField, row - 1, col,
+                                    theField[row - 1][col]);
+
+                            incrementSafeSpot(theField, row - 1, col - 1,
+                                    theField[row - 1][col - 1]);
 
                         } else { //everything in the middle
-                            leftTopDia = theField[row - 1][col - 1];
-                            leftSide = theField[row][col - 1];
-                            topSide = theField[row - 1][col];
-                            rightTopDia = theField[row - 1][col + 1];
-                            rightSide = theField[row][col + 1];
-                            rightBtmDia = theField[row + 1][col + 1];
-                            bottomSide = theField[row + 1][col];
-                            leftBtmDia = theField[row + 1][col - 1];
 
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row - 1, col - 1, leftTopDia);
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
-                            incrementSafeSpot(theField, row + 1, col - 1, leftBtmDia);
-                            incrementSafeSpot(theField, row + 1, col, bottomSide);
-                            incrementSafeSpot(theField, row - 1, col + 1, rightTopDia);
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
-                            incrementSafeSpot(theField, row + 1, col + 1, rightBtmDia);
+                            incrementSafeSpot(theField, row - 1, col,
+                                    theField[row - 1][col]);
+
+                            incrementSafeSpot(theField, row - 1, col - 1,
+                                    theField[row - 1][col - 1]);
+
+                            incrementSafeSpot(theField, row, col - 1,
+                                    theField[row][col - 1]);
+
+                            incrementSafeSpot(theField, row + 1, col - 1,
+                                    theField[row + 1][col - 1]);
+
+                            incrementSafeSpot(theField, row + 1, col,
+                                    theField[row + 1][col]);
+
+                            incrementSafeSpot(theField, row - 1, col + 1,
+                                    theField[row - 1][col + 1]);
+
+                            incrementSafeSpot(theField, row, col + 1,
+                                    theField[row][col + 1]);
+
+                            incrementSafeSpot(theField, row + 1, col + 1,
+                                    theField[row + 1][col + 1]);
 
                         }
                     } else if (theColumns > 1) { // single row multiple columns
                         if (col == 0) { // left edge
                             // case single row
 
-                            rightSide = theField[row][col + 1];
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
+                            incrementSafeSpot(theField, row, col + 1,
+                                    theField[row][col + 1]);
 
                         } else if (isColRightEdge) { // right
                             // edge case single row
 
-                            leftSide = theField[row][col - 1];
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
+                            incrementSafeSpot(theField, row, col - 1,
+                                    theField[row][col - 1]);
 
                         } else if (col < theColumns - 1) { //middle
                             // elements single row
 
-                            leftSide = theField[row][col - 1];
-                            rightSide = theField[row][col + 1];
-
-                            incrementSafeSpot(theField, row, col - 1, leftSide);
-                            incrementSafeSpot(theField, row, col + 1, rightSide);
+                            incrementSafeSpot(theField, row, col - 1, theField[row][col - 1]);
+                            incrementSafeSpot(theField, row, col + 1, theField[row][col + 1]);
 
                         }
                     } else if (theRows > 1) { // single column, multiple rows
 
                         if (row == 0) {
-                            bottomSide = theField[row + 1][col];
-                            incrementSafeSpot(theField, row + 1, col, bottomSide);
+                            incrementSafeSpot(theField, row + 1, col,  theField[row + 1][col]);
                         } else if (row == theRows - 1) {
-                            topSide = theField[row - 1][col];
-                            incrementSafeSpot(theField, row - 1, col, topSide);
+                            incrementSafeSpot(theField, row - 1, col, theField[row - 1][col]);
                         } else {
-                            topSide = theField[row - 1][col];
-                            bottomSide = theField[row + 1][col];
-                            incrementSafeSpot(theField, row - 1, col, topSide);
-                            incrementSafeSpot(theField, row + 1, col, bottomSide);
+                            incrementSafeSpot(theField, row - 1, col, theField[row - 1][col]);
+                            incrementSafeSpot(theField, row + 1, col, theField[row + 1][col]);
                         }
                     }
                 }
@@ -244,12 +242,27 @@ public class WhitneyKMineSweeper {
         }
     }
 
+    private void addHintsHelper(final String[][] theField, final String theElement) {
+        final String topSide;
+        final String rightTopDia;
+        final String rightSide;
+        final String rightBtmDia;
+        final String bottomSide;
+        final String leftBtmDia;
+        final String leftSide;
+        final String leftTopDia;
+
+
+
+    }
+
     /**
      * Increments the safe spots that touches a mine by 1 for every mine it touches.
+     *
      * @param thePlayfield The minefield.
-     * @param theRow The number of rows that makes up the field.
-     * @param theCol The number of columns that makes up the field.
-     * @param theElement the object inside the grid location.
+     * @param theRow       The number of rows that makes up the field.
+     * @param theCol       The number of columns that makes up the field.
+     * @param theElement   the object inside the grid location.
      */
     private void incrementSafeSpot(final String[][] thePlayfield, final int theRow,
                                    final int theCol, final String theElement) {
