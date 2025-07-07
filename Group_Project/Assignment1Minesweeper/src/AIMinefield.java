@@ -8,7 +8,7 @@ public class AIMinefield {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        String fileName = "minefield.txt";
+        String fileName = "input_generator.txt";
 
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
             boolean keepGoing = true;
