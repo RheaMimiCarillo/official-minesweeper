@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Kassie Whitney
  * @version 6.30.25
  */
-public class WhitneyKMineSweeper {
+public class Minesweeper {
 
     /**
      * Mines.
@@ -26,7 +26,7 @@ public class WhitneyKMineSweeper {
     /**
      * Constructor for the minesweeper game.
      */
-    public WhitneyKMineSweeper() {
+    public Minesweeper() {
         super();
     }
 
@@ -367,9 +367,9 @@ public class WhitneyKMineSweeper {
      * @param theArgs Command line arguments, the redirected file from the command prompt
      */
     public static void main(final String[] theArgs) {
-        final WhitneyKMineSweeper mineSweeper = new WhitneyKMineSweeper();
+        final Minesweeper minesweeper = new Minesweeper();
 
-        mineSweeper.executeComLineArgs();
+        minesweeper.executeComLineArgs();
 
     }
 
