@@ -118,9 +118,12 @@ public class WhitneyKMineSweeper {
                         } else if (isRowBtmEdge && isColLeftEdge) { //bottom left
                             // corner
 
-                            incrementSafeSpot(theField, row - 1, col, theField[row - 1][col]);
-                            incrementSafeSpot(theField, row - 1, col + 1, theField[row - 1][col + 1]);
-                            incrementSafeSpot(theField, row, col + 1, theField[row][col + 1]);
+                            incrementSafeSpot(theField, row - 1, col,
+                                    theField[row - 1][col]);
+                            incrementSafeSpot(theField, row - 1, col + 1,
+                                    theField[row - 1][col + 1]);
+                            incrementSafeSpot(theField, row, col + 1,
+                                    theField[row][col + 1]);
 
                         } else if (isColLeftEdge) { // Left side wall
 
@@ -132,7 +135,8 @@ public class WhitneyKMineSweeper {
                                     theField[row][col + 1]);
                             incrementSafeSpot(theField, row + 1, col + 1,
                                     theField[row + 1][col + 1]);
-                            incrementSafeSpot(theField, row + 1, col, theField[row + 1][col]);
+                            incrementSafeSpot(theField, row + 1, col,
+                                    theField[row + 1][col]);
 
                         } else if (isRowBtmEdge && isColRightEdge) { // bottom right corner
 
