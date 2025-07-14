@@ -8,9 +8,9 @@ import java.util.Scanner;
  * @version Summer 2025
  */
 
-public final class Minesweeper {
+public final class OfficialMinesweeper {
 
-    private Minesweeper() {
+    private OfficialMinesweeper() {
     }
 
     /**
