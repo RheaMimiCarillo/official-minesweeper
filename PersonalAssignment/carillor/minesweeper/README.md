@@ -6,16 +6,17 @@ Author: Rhea Mimi Carillo
 
 #### Deliverables
 
-- [ ] readme.txt file (not yet)
-- [x] readme.txt file (120 mins)
+- total time spent for deliverables: 10 hours
+
+- [x] readme.txt file
     - [x] Has team member name
     - [x] Lists estimate of time it took to produce solution
     - [x] Lists any shortcomings/concerns with this solution
-- [ ] 1 min minesweeper_input.txt file
-- [ ] 1 min minesweeper_output.txt file
+- [x] 1 min minesweeper_input.txt file
+- [x] 1 min minesweeper_output.txt file
 
-- [ ] Properly reads input from `System.in`
-- [ ] Properly writes output to `System.out`
+- [x] Properly reads input from `System.in`
+- [x] Properly writes output to `System.out`
 - [ ] _(optional)_ Documentation
 - [ ] _(optional)_ Unit tests
     - [ ] At least 15 test cases to cover general cases and edge cases
@@ -30,14 +31,14 @@ Author: Rhea Mimi Carillo
         - [ ] 100x1 cases
         - [ ] 1x1 cases
         - [ ] Random size cases with different percentages of mines
-- [ ] Input generator solution in its own folder
-    - [ ] AI-generated robust input file
-- [ ] Output formatted precisely
-- [ ] Output is printed to the console/keyboard/`System.out`
+- [x] Input generator solution in its own folder
+    - [x] AI-generated robust input file
+- [x] Output formatted precisely
+- [x] Output is printed to the console/keyboard/`System.out`
 
 #### Shortcomings & concerns
 
-- I wrote readme.md instead of readme.txt.
+- I wrote readme.md instead of readme.txt.java
 - Cyclomatic complexity of my code is high.
 - No unit tests for input generator program or my individual solution.
 - Implementation comments in my solution are not fully compliant with the course style guide.
